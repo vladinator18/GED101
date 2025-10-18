@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timothy Raj I. Thadani - Digital Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #3b82f6;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --light: #ffffff;
+            --lighter: #f0f9ff;
+            --dark: #1e293b;
+            --gray: #475569;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #ddd6fe 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bg-animation span {
+            position: absolute;
+            display: block;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(139, 92, 246, 0.3));
+            animation: float 25s infinite;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .bg-animation span:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .bg-animation span:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .bg-animation span:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .bg-animation span:nth-child(4) { left: 40%; animation-delay: 6s; }
+        .bg-animation span:nth-child(5) { left: 50%; animation-delay: 8s; }
+        .bg-animation span:nth-child(6) { left: 60%; animation-delay: 10s; }
+        .bg-animation span:nth-child(7) { left: 70%; animation-delay: 12s; }
+        .bg-animation span:nth-child(8) { left: 80%; animation-delay: 14s; }
+        .bg-animation span:nth-child(9) { left: 90%; animation-delay: 16s; }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
+
+        /* Header */
+        header {
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: slideDown 0.8s ease-out;
+            text-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Video Section */
+        .video-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
+            background: white;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+        }
+
+        /* Card Styles */
+        .dimension-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+            animation: fadeIn 0.6s ease-out;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+        }
+
+        .dimension-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.25);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dimension-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .dimension-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .dimension-title {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dimension-content {
+            color: var(--dark);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Image Gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .image-placeholder {
+            background: linear-gradient(135deg, #e0f2fe, #ddd6fe);
+            border-radius: 12px;
+            padding: 60px 20px;
+            text-align: center;
+            border: 2px dashed var(--primary);
+            color: var(--gray);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .image-placeholder:hover {
+            transform: scale(1.02);
+            border-style: solid;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Links Section */
+        .links-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
+        }
+
+        /* Rating Section */
+        .rating-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .rating-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .rating-number {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .rating-label {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--gray);
+            border-top: 2px solid rgba(59, 130, 246, 0.2);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .dimension-card {
+                padding: 25px;
+            }
+
+            .dimension-title {
+                font-size: 1.5rem;
+            }
+
+            .dimension-content {
+                font-size: 1rem;
+            }
+
+            .rating-number {
+                font-size: 3rem;
+            }
+
+            .links-container {
+                flex-direction: column;
+            }
+
+            .link-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            z-index: 1000;
+            transition: width 0.1s ease;
+            box-shadow: 0 2px 10px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Loading Animation */
+        .section {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionFadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes sectionFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="hero-title">Timothy Raj I. Thadani</h1>
+            <p class="hero-subtitle">Student • Gamer • Tech Enthusiast • Problem Solver</p>
+            <p style="color: var(--gray); max-width: 700px; margin: 0 auto;">
+                Passionate about technology, gaming, and breaking down complex problems. 
+                I love building cool stuff and understanding how the world works.
+            </p>
+        </header>
+
+        <!-- Video Section -->
+        <section class="video-section section">
+            <h2 style="font-size: 2rem; margin-bottom: 30px; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Introduction Video</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p style="margin-top: 15px; color: var(--gray); font-size: 0.9rem;">Replace the video ID in the embed URL with your YouTube video</p>
+        </section>
+
+        <main>
+            <section class="section">
+                <div class="dimension-card">
+                    <div class="dimension-header">
+                        <div class="dimension-icon">💪</div>
+                        <h2 class="dimension-title">Physical Dimension</h2>
+                    </div>
+                    <div class="dimension-content">
+                        <div class="image-gallery">
+                            <div class="image-placeholder">📸 f44fe5a2-ec35-4900-b835-f4787fd7cbf4.jpg</div>
+                            <div class="image-placeholder">📸 4d9d85dc-13af-4e97-9373-195abe8ac0d2.jpg</div>
+                            <div class="image-placeholder">📸 c5250bc7-4e45-4cd6-a2d6-72e381ccc1ab.jpg</div>
+                            <div class="image-placeholder">📸 5cea99ef-9a4f-4e30-821d-a18247a28dc7.jpg</div>
+                        </div>
+                        <p>I've developed a passion for sports like Table Tennis and enjoy working out. While my self-image hasn't always been the best, largely due to being severely obese—currently 114.5 kg when my ideal weight is 80 kg or less—I am actively working on improving myself through regular gym visits and a better diet.</p>
+                        <p style="margin-top: 15px;">My mood significantly impacts my motivation, sometimes causing me to lose sight of my goals, but I remain committed to self-improvement and becoming the best version of myself.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" style="animation-delay: 0.1s;">
+                <div class="dimension-card">
+                    <div class="dimension-header">
+                        <div class="dimension-icon">❤️</div>
+                        <h2 class="dimension-title">Sexual Dimension</h2>
+                    </div>
+                    <div class="dimension-content">
+                        <p>I really struggle with my self-confidence, especially when it comes to how I look. Seeing my body often makes me doubt myself and lowers my self-esteem. But even with that going on, I'm not really feeling any pressure to find romantic love right now.</p>
+                        <p style="margin-top: 15px;">Instead, I've decided to focus on things and activities that I genuinely enjoy and find fulfilling. I figure that by discovering myself and pursuing my passions, love will just naturally come my way. This journey of looking inward has led to a pretty big realization: I've learned that my ability to love isn't limited by traditional ideas.</p>
+                        <p style="margin-top: 15px;">Reflecting on these fleeting attractions helped me realize and accept that I might be pansexual. This understanding has brought a new level of clarity and acceptance to how I see myself, even as I continue to work through my self-confidence issues.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" style="animation-delay: 0.2s;">
+                <div class="dimension-card">
+                    <div class="dimension-header">
+                        <div class="dimension-icon">🌍</div>
+                        <h2 class="dimension-title">Cultural Dimension</h2>
+                    </div>
+                    <div class="dimension-content">
+                        <p>Growing up in a household rich with diverse cultures has profoundly shaped my perspective. My upbringing was a fascinating blend of Hindu beliefs and traditions, intertwined with local Filipino and Chinese cultures. Additionally, my mother's Chavacano heritage from the Zamboanga region added another distinct layer to this vibrant tapestry of influences.</p>
+                        <p style="margin-top: 15px;">This unique multicultural environment has been instrumental in cultivating a worldview characterized by openness and acceptance. It has taught me to approach new ideas and different ways of life with an inquisitive mind, fostering a deep appreciation for the myriad expressions of human culture.</p>
+                        <p style="margin-top: 15px;">Crucially, it has also instilled in me the understanding that I am not rigidly bound by any single set of traditions or beliefs. Instead, I am empowered to navigate these diverse influences, choosing which aspects resonate most deeply with my evolving self.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" style="animation-delay: 0.3s;">
+                <div class="dimension-card">
+                    <div class="dimension-header">
+                        <div class="dimension-icon">💻</div>
+                        <h2 class="dimension-title">Digital Dimension</h2>
+                    </div>
+                    <div class="dimension-content">
+                        <p>In my age I am surrounded by several of my online identities. The me I present on social media can be quite different from who I am in real life. I thrive in digital environments, pursuing programming on platforms like GitHub for problem-solving and continuous learning, and engaging in online games such as League of Legends for strategy and social interaction.</p>
+                        <p style="margin-top: 15px;">I'm also active in various online communities, using Discord servers for gaming and programming discussions, collaboration, and learning in robotics. These digital spaces foster intellectual growth and meaningful connections.</p>
+                        <div class="links-container">
+                            <a href="https://github.com/vladinator18" target="_blank" class="link-btn">
+                                <span>🐙</span> GitHub Profile
+                            </a>
+                            <a href="https://www.facebook.com/timothyraj.thadani.5" target="_blank" class="link-btn">
+                                <span>📘</span> Facebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" style="animation-delay: 0.4s;">
+                <div class="dimension-card">
+                    <div class="dimension-header">
+                        <div class="dimension-icon">💰</div>
+                        <h2 class="dimension-title">Material Dimension</h2>
+                    </div>
+                    <div class="dimension-content">
+                        <p>While my family isn't exceptionally wealthy, I'm fortunate to lead a comfortable and fulfilling life, free from the anxieties often associated with financial struggles. This comfort means I have access to reliable, up-to-date technology for academics and personal interests, and the ability to travel and explore.</p>
+                        <p style="margin-top: 15px;">This lifestyle is built on hard work and mindful spending. I actively contribute to my mother's business, gaining valuable experience and appreciating the effort required to maintain our comfort. When we travel, we are frugal and plan meticulously, ensuring we can enjoy experiences without overspending. This demonstrates that comfort and careful management are indeed compatible.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" style="animation-delay: 0.5s;">
+                <div class="dimension-card">
+                    <div class="dimension-header">
+                        <div class="dimension-icon">🧠</div>
+                        <h2 class="dimension-title">Mental Dimension</h2>
+                    </div>
+                    <div class="dimension-content">
+                        <p>My thoughts greatly affect my mental and emotional state. I often overthink, leading to anxiety. While I'm confident, I try not to be overbearing, though I sometimes lose my composure.</p>
+                        <p style="margin-top: 15px;">Hobbies help me manage stress and grow. Table tennis is especially good for stress relief. The sport helps me focus and channel energy. When I score a good point, I shout "chole," a Chinese table tennis term meaning "one more," showing my drive to keep succeeding. This helps me regulate emotions and improve performance.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" style="animation-delay: 0.6s;">
+                <div class="dimension-card">
+                    <div class="dimension-header">
+                        <div class="dimension-icon">😊</div>
+                        <h2 class="dimension-title">Emotional Dimension</h2>
+                    </div>
+                    <div class="dimension-content">
+                        <p>My emotional well-being is deeply influenced by my thoughts. Overthinking often leads to feelings of anxiety. While I possess confidence, I strive to prevent it from becoming overbearing, though I sometimes struggle to maintain my emotional composure.</p>
+                        <p style="margin-top: 15px;">My hobbies serve as vital outlets for managing stress and fostering emotional growth. Table tennis, in particular, is incredibly effective for stress relief. This sport helps me channel my energy and maintain focus, providing balance in my emotional life.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" style="animation-delay: 0.7s;">
+                <div class="dimension-card">
+                    <div class="dimension-header">
+                        <div class="dimension-icon">✨</div>
+                        <h2 class="dimension-title">Spiritual Dimension</h2>
+                    </div>
+                    <div class="dimension-content">
+                        <p>Growing up in a multicultural household, I was exposed to a blend of Hindu, Christian, and local Filipino beliefs. These diverse perspectives have profoundly shaped my worldview. While religion is a significant factor in many people's lives, I personally identify as an atheist or agnostic.</p>
+                        <p style="margin-top: 15px;">I believe that a God may exist, but we won't know for certain until we are dead or dying. At that point, I will accept whatever fate is given, hopefully satisfying my curiosity about what comes next.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="rating-section section" style="animation-delay: 0.8s;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 40px; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Module Experience</h2>
+                <div class="rating-card">
+                    <div class="rating-number">7.23/10</div>
+                    <div class="rating-label">Overall Module Rating</div>
+                    <p style="color: var(--dark); line-height: 1.8;">
+                        I really enjoyed connecting the different concepts, which helped me understand my own thought processes better. It was a stimulating environment that encouraged critical thinking and offered new perspectives on how I approach problem-solving and learning.
+                    </p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Timothy Raj I. Thadani | Digital Portfolio - Module 2</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Dimensions of the Self</p>
+        </footer>
+    </div>
+
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        });
+
+        // Intersection Observer for sections
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            section.style.animationPlayState = 'paused';
+            observer.observe(section);
+        });
+
+        // Smooth scroll for links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
